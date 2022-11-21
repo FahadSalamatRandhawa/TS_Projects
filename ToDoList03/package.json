@@ -1,0 +1,25 @@
+{
+  "name": "project03_todo_list",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node ./build/index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sample":"tsc && node ./build/index2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.2"
+  },
+  "bin":{
+	  "project03_todo_list":"build/index.js"
+  }
+}
