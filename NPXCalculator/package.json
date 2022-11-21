@@ -1,0 +1,19 @@
+{
+  "name": "fahad_calculator",
+  "version": "1.1.1",
+  "type": "module",
+  "description": "practicing inquirer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^9.1.3"
+  },
+  "bin": {
+    "fahad_calculator": "build/index.js"
+  }
+}
