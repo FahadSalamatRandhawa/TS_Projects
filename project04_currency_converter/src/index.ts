@@ -25,12 +25,12 @@ const scheema:{}=[
 {
     name:"Your_Currency",
         pattern:/^\d/,
-        message:"must be number",
+        message:"must be single digit number",
         type:'number',
         description:'Your Currency<id>',
         required:true,
         conform: function (value:number) {
-            if(isNaN(value)){
+            if(isNaN(value) || (value >9 || value < 0)){
                 return false;
             }
             return true;
@@ -52,13 +52,13 @@ const scheema:{}=[
     },
 {
     name:"Convert_To",
-        pattern:/^\d+$/,
-        message:"must be number",
+        pattern:/^\d/,
+        message:"must be single digit number",
         type:'number',
         description:'Convert To<id>',
         required:true,
         conform: function (value:number) {
-            if(isNaN(value)){
+            if(isNaN(value) || (value >9 || value < 0)){
                 return false;
             }
             return true;
@@ -72,11 +72,14 @@ async function currencyCovert() {
     console.log(currencyChart);
     prompt.get(scheema,function(err,res){
         let myCurrencyID=Number(res.Your_Currency);
+        let exchangeCurrencyID=Number(res.Convert_To);
         let amount:number=Number(res.Amount);
-        let convertedAmount:number;
-        console.log(`Your Currency : ${currencyChart[myCurrencyID].name}
-        \n1USD Value :${currencyChart[myCurrencyID].value}
-        \nAmount :${amount}`);
+        let yourCurrencyExchangeRate=(currencyChart[exchangeCurrencyID].value)/(currencyChart[myCurrencyID].value);
+        let convertedAmount:number=yourCurrencyExchangeRate*amount;
+
+        console.log(`Your Currency : ${currencyChart[myCurrencyID].name}  --  1USD Value :${currencyChart[myCurrencyID].value}
+        \nAmount :${amount}  -- EchangeRate :${yourCurrencyExchangeRate}
+        \nConverted to :${convertedAmount}`);
     });
 }
 currencyCovert()

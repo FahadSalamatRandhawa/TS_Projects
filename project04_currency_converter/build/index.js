@@ -31,12 +31,12 @@ const scheema = [
     {
         name: "Your_Currency",
         pattern: /^\d/,
-        message: "must be number",
+        message: "must be single digit number",
         type: 'number',
         description: 'Your Currency<id>',
         required: true,
         conform: function (value) {
-            if (isNaN(value)) {
+            if (isNaN(value) || (value > 9 || value < 0)) {
                 return false;
             }
             return true;
@@ -58,13 +58,13 @@ const scheema = [
     },
     {
         name: "Convert_To",
-        pattern: /^\d+$/,
-        message: "must be number",
+        pattern: /^\d/,
+        message: "must be single digit number",
         type: 'number',
         description: 'Convert To<id>',
         required: true,
         conform: function (value) {
-            if (isNaN(value)) {
+            if (isNaN(value) || (value > 9 || value < 0)) {
                 return false;
             }
             return true;
@@ -74,11 +74,17 @@ const scheema = [
 function currencyCovert() {
     return __awaiter(this, void 0, void 0, function* () {
         prompt_1.default.message = colors_1.default.yellow('Question!');
-        prompt_1.default.delimiter = colors_1.default.white('<-->\n');
+        prompt_1.default.delimiter = colors_1.default.white('<-->');
         console.log(currencyChart);
         prompt_1.default.get(scheema, function (err, res) {
-            let num = Number(res.Your_Currency);
-            console.log(currencyChart[num], res.Amount);
+            let myCurrencyID = Number(res.Your_Currency);
+            let exchangeCurrencyID = Number(res.Convert_To);
+            let amount = Number(res.Amount);
+            let yourCurrencyExchangeRate = (currencyChart[exchangeCurrencyID].value) / (currencyChart[myCurrencyID].value);
+            let convertedAmount = yourCurrencyExchangeRate * amount;
+            console.log(`Your Currency : ${currencyChart[myCurrencyID].name}  --  1USD Value :${currencyChart[myCurrencyID].value}
+        \nAmount :${amount}  -- EchangeRate :${yourCurrencyExchangeRate}
+        \nConverted to :${convertedAmount}`);
         });
     });
 }
