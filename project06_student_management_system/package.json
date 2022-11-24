@@ -1,6 +1,6 @@
 {
   "name": "project06_student_management_system",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -18,7 +18,7 @@
     "@types/inquirer": "^9.0.3",
     "@types/prompt": "^1.1.4"
   },
-  "bin":{
-	  "project06_student_management_system":"build/index.js"
+  "bin": {
+    "project06_student_management_system": "build/index.js"
   }
 }

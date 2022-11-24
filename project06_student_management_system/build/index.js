@@ -153,8 +153,8 @@ function main() {
                             de_Enroll.forEach(course => {
                                 let removeIndex = student.coursesEnrolled.indexOf(course);
                                 student.coursesEnrolled.splice(removeIndex, 1);
+                                student.balance += (-feeStructure[course]);
                             });
-                            calculateFee(student);
                         }
                     });
                 }
