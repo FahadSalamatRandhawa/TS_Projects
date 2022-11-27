@@ -1,6 +1,6 @@
 {
   "name": "project10_oop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,6 +17,6 @@
     "@types/prompt": "^1.1.4"
   },
   "bin": {
-    "project10_oop":"build/index.js"
+    "project10_oop": "build/index.js"
   }
 }
